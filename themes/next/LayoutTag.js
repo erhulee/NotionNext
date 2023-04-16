@@ -6,17 +6,17 @@ import BlogPostListPage from './components/BlogPostListPage'
 import BLOG from '@/blog.config'
 
 export const LayoutTag = (props) => {
-  const { tags, tag } = props
+  const { tagOptions, tag } = props
 
   return <LayoutBase currentTag={tag} {...props}>
-    <StickyBar>
-      <TagList tags={tags} currentTag={tag}/>
-    </StickyBar>
-    <div className='md:mt-8'>
-      {BLOG.POST_LIST_STYLE !== 'page'
-        ? <BlogPostListScroll {...props} showSummary={true} />
-        : <BlogPostListPage {...props} />
-    }
-    </div>
-  </LayoutBase>
+        <StickyBar>
+            <TagList tagOptions={tagOptions} currentTag={tag} />
+        </StickyBar>
+        <div className='md:mt-8'>
+            {BLOG.POST_LIST_STYLE !== 'page'
+              ? <BlogPostListScroll {...props} showSummary={true} />
+              : <BlogPostListPage {...props} />
+            }
+        </div>
+    </LayoutBase>
 }

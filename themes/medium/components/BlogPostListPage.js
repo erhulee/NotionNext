@@ -16,17 +16,19 @@ const BlogPostListPage = ({ page = 1, posts = [], postCount }) => {
 
   if (!posts || posts.length === 0) {
     return <BlogPostListEmpty />
-  } else {
-    return (
-      <div id="container" className='w-full justify-center'>
+  }
+
+  return (
+      <div className='w-full justify-center'>
+        <div id='container'>
         {/* 文章列表 */}
         {posts.map(post => (
           <BlogPostCard key={post.id} post={post} />
         ))}
+        </div>
         <PaginationSimple page={page} totalPage={totalPage} />
       </div>
-    )
-  }
+  )
 }
 
 export default BlogPostListPage
