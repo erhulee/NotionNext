@@ -1,10 +1,15 @@
-import { useRouter } from 'next/router'
 import { useGlobal } from '@/lib/global'
+import { useRouter } from 'next/router'
 import { useImperativeHandle, useRef, useState } from 'react'
 
 let lock = false
 
-const SearchInput = ({ currentTag, currentSearch, cRef }) => {
+/**
+ * 搜索输入框
+ * @param {*} param0 
+ * @returns 
+ */
+const SearchInput = ({ currentTag, keyword, cRef }) => {
   const { locale } = useGlobal()
   const router = useRouter()
   const searchInputRef = useRef(null)
@@ -68,7 +73,7 @@ const SearchInput = ({ currentTag, currentSearch, cRef }) => {
     onCompositionUpdate={lockSearchInput}
     onCompositionEnd={unLockSearchInput}
     onChange={e => updateSearchKey(e.target.value)}
-    defaultValue={currentSearch || ''}
+    defaultValue={keyword || ''}
   />
 
   <div className='-ml-8 cursor-pointer float-right items-center justify-center py-2'
